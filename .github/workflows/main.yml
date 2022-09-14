@@ -23,7 +23,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - name: publish to artifactory
-        uses: advancedcsg-open/action-jfrog-cli@master
+        uses: advancedcsg-open/action-jfrog-cli@1.2.0
         with:
           url: 'https://dineshasija.jfrog.io/'
           credentials type: 'accesstoken'
