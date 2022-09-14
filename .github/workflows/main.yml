@@ -25,5 +25,3 @@ jobs:
         env:
           JF_URL: 'https://dineshasija.jfrog.io/'
           JF_ACCESS_TOKEN: ${{ secrets.RT_ACCESS_TOKEN }}
-      - run: |
-          jf rt ping
