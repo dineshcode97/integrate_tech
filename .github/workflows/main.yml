@@ -21,15 +21,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: publish to artifactory
-        uses: advancedcsg-open/action-jfrog-cli@v1.2.0
-        with:
-          url: 'https://dineshasija.jfrog.io/'
-          credentials type: 'accesstoken'
-          #access token: 'eyJ2ZXIiOiIyIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYiLCJraWQiOiJvSW5LSVBJdjFqMFdhZTkxVHZfbGdjZzVBUlVYdzRfX19ROFJ6M2V4cWVvIn0.eyJleHQiOiJ7XCJyZXZvY2FibGVcIjpcInRydWVcIn0iLCJzdWIiOiJqZmFjQDAxZ2N3YnEyZGI2ZXI0MTVrNTM4d3AwaDA3XC91c2Vyc1wvZGluZXNoIiwic2NwIjoiYXBwbGllZC1wZXJtaXNzaW9uc1wvYWRtaW4iLCJhdWQiOiIqQCoiLCJpc3MiOiJqZmZlQDAwMCIsImlhdCI6MTY2MzE0NzIyNSwianRpIjoiMDFmZTdjMjAtMjkwNy00ODFlLThkZDctM2JhZWQxMjQ5YzEzIn0.YZZ0qcfnHVJdKTBBzzBAjanA7lVXpby4YLpR8dQuEZCFLFY5dMeXbfWEd7d1535q_Mi-CoxQIpGTQv3IZzsyHNokwl9bNdHCekJiWLF687CmdZoXDowdTuCyixVhLJ746q_i3wlEsKO8ROrX8CkQflOcY4aNSCPLMB0utiFAGQl9O_oaUonakKOBdgWYpa7cQaOSyl9r8mDu8c5868fTaNCkXl9oUO0MdDYMK4QSg4R5-q8eX8qLF17uaoqQny4nfRRwInwcp5giXHZS-I6V6BXVaqj4eDVHTOQNWCrjGxHHdcorrOqwn4A-WVDltyg5spEfqLl2zTKroNiXISAh4Q'
-          access token: ${{ secrets.RT_ACCESSTOKEN }}
-          #args: u "*" "example-repo-local/" --recursive=true 
-          run: jf rt ping
-          
-          
-          
-          
+        uses: jfrog/setup-jfrog-cli@v2
+        env:
+    # JFrog platform url (for example: https://acme.jfrog.io) 
+          JF_URL: 'https://dineshasija.jfrog.io/'
+    
+    # JFrog Platform access token
+          JF_ACCESS_TOKEN: ${{ secrets.RT_ACCESS_TOKEN }}
+      - run: |
+          jf rt u "(*).py" my-local-repo/{1}/ --recursive=false
