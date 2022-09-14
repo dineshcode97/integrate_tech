@@ -29,4 +29,4 @@ jobs:
     # JFrog Platform access token
           JF_ACCESS_TOKEN: ${{ secrets.RT_ACCESS_TOKEN }}
       - run: |
-          jf rt u "(*).py" example-repo-local/ --recursive=false
+          jf rt ping
